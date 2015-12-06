@@ -2,6 +2,7 @@ var lat;
 var long;
 var filter = {};
 var mapInstance;
+var pets = {};
 
 /*****************************************************************************/
 /* Home: Event Handlers */
@@ -35,13 +36,14 @@ Template.map.onCreated(function () {
 	
 renderMap = function (filter) {
   petsCollection = Pets.find(filter);
- for (var petKey in pets) {
-	 console.log(pets[petKey]);
-	 pets[petKey].setMap(null);
- }
+  for (var petKey in pets) {
+  	 console.log(pets[petKey]);
+  	 pets[petKey].setMap(null);
+  }
   pets = {};
+  console.log(petsCollection);
   petsCollection.forEach(function(document){
-	  console.log(document);
+  	  console.log(document);
         var marker = new google.maps.Marker({
           draggable: false,
           animation: google.maps.Animation.DROP,
@@ -49,21 +51,21 @@ renderMap = function (filter) {
           map: mapInstance.instance,
           id: document._id
         });
-	  console.log(document._id);
-	  petVal = Pets.findOne({"_id": document._id});
-	  console.log(petVal);
-	  var petInfo =  petVal.catSize + " " + petVal.catColor + " " + petVal.catBreed + " " + petVal.catGender + " Cat<	br> " + "<a href='/pet/" + document._id + "'>More Info</a>";
-	  var info = new google.maps.InfoWindow({
-	        content: petInfo
-	  });
+  	  console.log(document._id);
+  	  petVal = Pets.findOne({"_id": document._id});
+  	  console.log(petVal);
+  	  var petInfo =  petVal.catSize + " " + petVal.catColor + " " + petVal.catBreed + " " + petVal.catGender + " Cat<	br> " + "<a href='/pet/" + document._id + "'>More Info</a>";
+  	  var info = new google.maps.InfoWindow({
+  	        content: petInfo
+  	  });
 
 
-	  google.maps.event.addListener(marker, 'click', function() {
-	      info.open(marker.getMap(), marker);
-	  });
-	  
+  	  google.maps.event.addListener(marker, 'click', function() {
+  	      info.open(marker.getMap(), marker);
+  	  });
+
         pets[document._id] = marker;
-	  
+
   });
 }
 
