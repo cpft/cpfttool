@@ -12,3 +12,10 @@
   background: #666;
   margin-bottom: 30px;
 }
+
+.image-thumbnail {
+	min-width:64px;
+	min-height:64px;
+	max-width:64px;
+	max-height:64px;
+}

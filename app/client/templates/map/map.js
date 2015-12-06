@@ -61,7 +61,30 @@ renderMap = function (filter) {
   	  console.log(document._id);
   	  petVal = Pets.findOne({"_id": document._id});
   	  console.log(petVal);
-  	  var petInfo =  petVal.catSize + " " + petVal.catColor + " " + petVal.catBreed + " " + petVal.catGender + " Cat<	br> " + "<a href='/pet/" + document._id + "'>More Info</a>";
+	  var petInfo = "<img class=image-thumbnail src="+petVal.imageUrl+"/><br>";
+	  petInfo += "<b>"
+	  if(petVal.postType == 0) {
+		  petInfo += "Lost ";
+	  } else {
+		  petInfo += "Found ";
+	  }
+	  if(petVal.petType == 0) {
+	  	petInfo += "Dog "
+	  } else if(petVal.petType == 1){
+	  	petInfo += "Cat "
+	  } else {
+	  	petInfo += "Pet Animal "
+	  }
+	  petInfo += "on " + petVal.petSpotted;
+	  petInfo += "</b>";
+	  petInfo += "<br> Name: " 
+	  if(petVal.petName) {
+		petInfo += petVal.petName;
+  	  } else {
+		  petInfo += "Unknown";
+  	  }
+  	  petInfo +=  "<br>" + 	petVal.petSize + " " + petVal.petColor + " " + petVal.petBreed + " " + petVal.petGender + " " + petVal.petAge + " at <br>";
+	  petInfo += petVal.petLocation;
   	  var info = new google.maps.InfoWindow({
   	        content: petInfo
   	  });

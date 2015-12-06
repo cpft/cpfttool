@@ -30,7 +30,9 @@ Template.report.events({
 		console.log("form submitted");
 		var postType = $("input[name='postType']:checked").val();
 		var petType = $("input[name='petType']:checked").val();
+		var petName = $("#inputPetName").val();
 		var petLocation = $("input[name='petLocation']").val();
+		var petAge = $("#inputPetAge").val();
 		var petSize = $("input[name='inputPetSize']:checked").val();
 		var petColor = $("#inputPetColor").val();
 		var petSpotted = $("#inputPetSpottedDate").val();
@@ -46,6 +48,8 @@ Template.report.events({
 		var options = {
 			postType:postType,
 			petType:petType,
+			petName:petName,
+			petAge:petAge,
 			petLocation:petLocation,
 			petSize:petSize,
 			petColor:petColor,
@@ -71,6 +75,8 @@ insertPetInfo = function (options) {
 	Pets.insert({
 		postType:options.postType,
 		petType:options.petType,
+		petName:options.petName,
+		petAge:options.petAge,
 		petLocation:options.petLocation,
 		petSize:options.petSize,
 		petColor:options.petColor,
