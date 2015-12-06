@@ -98,7 +98,7 @@
 				    <div class="form-group">
 				       <label for="inputPetLocation" class="col-lg-2 control-label" required>Pet Location</label>
 				      <div class="col-lg-10">
-				        <input id="autocomplete" type="text" class="col-lg-8 input-large search-query" name="petlocation"><br>
+				        <input id="autocomplete" type="text" class="col-lg-8 input-large search-query" name="petLocation"><br>
 				       </div>
 					</div>
 
@@ -142,16 +142,16 @@
 				    </div>
 
 				    <div class="form-group">
-				       <label for="inputCatSpottedDate" class="col-lg-2 control-label" required>Date Spotted</label>
+				       <label for="inputPetSpottedDate" class="col-lg-2 control-label" required>Date Spotted</label>
 				      <div class="col-lg-6">
-				        <input type="date" name="datepicker" id="inputCatSpottedDate">
+				        <input type="date" name="datepicker" id="inputPetSpottedDate">
 						<input type="hidden" name="lat" value="">
 						<input type="hidden" name="lng" value="">
 				      </div>
 				    </div>
 
                     <div class="form-group">
-				       <label for="inputCatBreed" class="col-lg-2 control-label" required>Pet Breed</label>
+				       <label for="inputPetBreed" class="col-lg-2 control-label" required>Pet Breed</label>
 				      <div class="col-lg-6">
 				        <select class="form-control" id="inputPetBreed">
  							{{#if equals petType 0}}
