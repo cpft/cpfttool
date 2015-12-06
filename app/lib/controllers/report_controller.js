@@ -6,6 +6,7 @@ ReportController = RouteController.extend({
   // this.subscribe('item', this.params._id).wait();
   
   subscriptions: function() {
+	  this.subscribe('cars');
   },
   
   // Subscriptions or other things we want to "wait" on. This also
@@ -23,6 +24,7 @@ ReportController = RouteController.extend({
   // return Posts.findOne({_id: this.params._id});
   
   data: function () {
+	 this.render('report', {});
   },
   
   // You can provide any of the hook options

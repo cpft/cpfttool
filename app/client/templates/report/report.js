@@ -1,11 +1,32 @@
 /*****************************************************************************/
 /* Home: Event Handlers */
 /*****************************************************************************/
+var fileVal;
+var fileData;
+var imageUrl;
+
 Template.report.events({
 	"change #inputPetType": function (event) {
 		Session.set("petType", $('input[name=petType]:checked').val());
 	},
-	'submit form': function(event) {
+	"change #inputPetPhoto": function (event) {
+		fileVal = event.target.files[0];		
+		var reader = new FileReader();
+		reader.onload = function(e) {
+		  var rawData = reader.result;
+		  var opt = {
+			  	image: rawData,
+			  	apiKey: "134dd87f0933693"
+		  } 
+		  Imgur.upload(opt, function(error, result) {
+			  imageUrl = result.link;
+			  console.log(imageUrl);
+		  });
+		}
+		fileData = reader.readAsDataURL(fileVal);
+	},
+	'click #submitbtn': function(event) {
+		event.preventDefault();
 		console.log("form submitted");
 		var postType = $("input[name='postType']:checked").val();
 		var petType = $("input[name='petType']:checked").val();
@@ -22,53 +43,58 @@ Template.report.events({
 		var ack = $("#ack").val();
 		var lat = $("input[name='lat']").val();
 		var lng = $("input[name='lng']").val();
-		console.log(postType);
-		console.log(petType);
-		console.log(petLocation);
-		console.log(petSize);
-		console.log(petColor);
-		console.log(petSpotted);
-		console.log(petBreed);
-		console.log(petGender);
-		console.log(petPhoto);
-		console.log(details);
-		console.log(finderName);
-		console.log(email);
-		console.log(ack);
-		console.log(lat);
-		console.log(lng);
-		event.preventDefault();
-		// Pets.insert({
-		// 	catLocation:catlocation,
-		// 	catSize:catSize,
-		// 	catColor:color,
-		// 	dateSpotted:catSpotted,
-		// 	catBreed:breed,
-		// 	catGender:gender,
-		// 	catPhoto:photo,
-		// 	moreDetails:details,
-		// 	subscribeStatus:subscribe,
-		// 	finderEmailID:email,
-		// 	confirmStatus:ack,
-		// 	lat:lat,
-		// 	lng:lng
-		// }, function(err, result) {
-		// 	if(result) {
-		// 		console.log(result);
-		// 		// var path = "/pet/" + result;
-		// 		var path = "/map";
-		// 		Router.go(path);
-		// 		// $("#success_alert").removeClass("hidden");
-		// 		// $("#success_alert").fadeOut(3000, "slow");
-		// 		// $("#success_alert").addClass("hidden");
-		// 		// $("form[name='reportpetform']").reset();
-		// 		// window.scrollTo(x-coord, y-coord);
-		// 	}
-		// });
+		var options = {
+			postType:postType,
+			petType:petType,
+			petLocation:petLocation,
+			petSize:petSize,
+			petColor:petColor,
+			petSpotted:petSpotted,
+			petBreed:petBreed,
+			petGender:petGender,
+			details:details,
+			finderName:finderName,
+			email:email,
+			ack:ack,
+			lat:lat,
+			lng:lng,
+			imageUrl:imageUrl
+		}
+		insertPetInfo(options);
 		return false;
 	}
 	
 });
+
+insertPetInfo = function (options) {
+	console.log(options);
+	Pets.insert({
+		postType:options.postType,
+		petType:options.petType,
+		petLocation:options.petLocation,
+		petSize:options.petSize,
+		petColor:options.petColor,
+		petSpotted:options.petSpotted,
+		petBreed:options.petBreed,
+		petGender:options.petGender,
+		petPhoto:options.petPhoto,
+		details:options.details,
+		finderName:options.finderName,
+		email:options.email,
+		ack:options.ack,
+		lat:options.lat,
+		lng:options.lng,
+		imageUrl:options.imageUrl
+	}, function(err, result) {
+		if(result) {
+			console.log(result);
+		} else {
+			console.log(err);
+		}
+	});
+
+}
+
 
 Template.registerHelper('equals', function (a, b) {
       return a == b;
