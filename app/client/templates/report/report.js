@@ -24,11 +24,28 @@ Template.report.helpers({
 /* Home: Lifecycle Hooks */
 /*****************************************************************************/
 Template.report.onCreated(function () {
-	Session.set("petType", 1);
 });
 
 Template.report.onRendered(function () {
+	Session.set("petType", 0);
+	this.autorun(function () {
+		if (GoogleMaps.loaded()) {
+        	if (GoogleMaps.loaded()) {
+				console.log("loaded");
+				$("#autocomplete").geocomplete({
+					map: $("#map"), details:"form"
+    			});
+			}
+		}
+	}); 
+	
 });
 
 Template.report.onDestroyed(function () {
+});
+
+Meteor.startup(function() {
+    GoogleMaps.load({
+      libraries: 'places'
+    });
 });

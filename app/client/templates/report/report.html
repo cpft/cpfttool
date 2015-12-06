@@ -32,17 +32,34 @@
 				  <fieldset>
 				    <legend><h3>Pet Details Form</h3></legend>
 				    <div class="form-group">
+				      <label for="inputPostType" class="col-lg-2 control-label" required>Issue Type</label>
+				      <div class="col-lg-6">
+				      	<!-- <div class="radio"> -->
+				          <label class="radio-inline">
+				            <input type="radio" name="postType" id="inputPostType" value="0" checked='checked'>
+				            I lost a pet
+				          </label>
+				        <!-- </div> -->
+				        <!-- <div class="radio"> -->
+				          <label class="radio-inline">
+				            <input type="radio" name="postType" id="inputPostType" value="1">
+				            I found a pet
+				          </label>
+				      </div>
+				    </div>
+					
+				    <div class="form-group">
 				      <label for="inputPetType" class="col-lg-2 control-label" required>Pet Type</label>
 				      <div class="col-lg-6">
 				      	<!-- <div class="radio"> -->
 				          <label class="radio-inline">
-				            <input type="radio" name="petType" id="inputPetType" value="0">
+				            <input type="radio" name="petType" id="inputPetType" value="0" checked='checked'>
 				            Dog
 				          </label>
 				        <!-- </div> -->
 				        <!-- <div class="radio"> -->
 				          <label class="radio-inline">
-				            <input type="radio" name="petType" id="inputPetType" value="1" checked='checked'>
+				            <input type="radio" name="petType" id="inputPetType" value="1">
 				            Cat
 				          </label>
 				        <!-- </div> -->
@@ -196,22 +213,15 @@
 				      </div>
 				    </div>
 
-				    
-
 					<div class="form-group">
-					    <div class="col-sm-offset-2 col-sm-10">
-					      <div class="checkbox">
-					        <label>
-					          <input type="checkbox" id="subscribe"> I want to subscribe to the rescued pet's updates
-					        </label>
-					      </div>
+					    <label for="inputPetFinderName" class="col-sm-2 control-label">Full Name</label>
+					    <div class="col-sm-10">
+					      <input type="text" class="form-control" id="inputPetFinderName" placeholder="Enter your full name">
 					    </div>
-					</div>
-
-				    <div class="form-group">
+						
 					    <label for="inputPetFinderEmail" class="col-sm-2 control-label">Email</label>
 					    <div class="col-sm-10">
-					      <input type="emailId" class="form-control" id="inputCatFinderEmail" placeholder="Enter your email ID">
+					      <input type="emailId" class="form-control" id="inputPetFinderEmail" placeholder="Enter your email ID">
 					    </div>
 				    </div>
 
