@@ -44,12 +44,19 @@ renderMap = function (filter) {
   console.log(petsCollection);
   petsCollection.forEach(function(document){
   	  console.log(document);
+	  var iconImage;
+	  if(document.postType==0) {
+	  	iconImage = "http://chart.apis.google.com/chart?cht=d&chdp=mapsapi&chl=pin%27i%5c%27%5bL%27-2%27f%5chv%27a%5c%5dh%5c%5do%5cFF1100%27fC%5c000000%27tC%5c000000%27eC%5cLauto%27f%5c&ext=.png";
+	  } else {
+	  	iconImage = "http://chart.apis.google.com/chart?cht=d&chdp=mapsapi&chl=pin%27i%5c%27%5bF%27-2%27f%5chv%27a%5c%5dh%5c%5do%5c009900%27fC%5c000000%27tC%5c000000%27eC%5cLauto%27f%5c&ext=.png";
+	  }
         var marker = new google.maps.Marker({
           draggable: false,
           animation: google.maps.Animation.DROP,
           position: new google.maps.LatLng(document.lat, document.lng),
           map: mapInstance.instance,
-          id: document._id
+          id: document._id,
+		icon: iconImage
         });
   	  console.log(document._id);
   	  petVal = Pets.findOne({"_id": document._id});

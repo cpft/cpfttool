@@ -88,6 +88,8 @@ insertPetInfo = function (options) {
 	}, function(err, result) {
 		if(result) {
 			console.log(result);
+			var path = "/map";
+			Router.go(path);
 		} else {
 			console.log(err);
 		}
