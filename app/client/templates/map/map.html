@@ -1,0 +1,21 @@
+<template name="map">
+  <div class="map-container">
+    <div class="well well-lg">
+       <div style="overflow: hidden;">
+        <form id="filterform"> 
+            <div class="form-group">
+                      <div class="col-lg-2">
+                        <select class="form-control" id="filterGender">
+						   <option selected>All</option>
+                           <option value='Male'>Male</option>
+                           <option value='Female'>Female</option>
+                        </select>
+                      </div>
+            </div>
+        </form>
+       </div> 
+    </div>    
+ 	  
+    {{> googleMap name="map" options=mapOptions}}
+  </div>
+</template>
