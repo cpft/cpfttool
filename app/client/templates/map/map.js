@@ -18,7 +18,7 @@ Template.map.helpers({
       if (GoogleMaps.loaded()) {
         return {
           center: new google.maps.LatLng(lat, long),
-			zoom: 14
+			zoom: 12
         };
       }
     }
@@ -106,21 +106,29 @@ Template.map.onDestroyed(function () {
 });
 
 Meteor.startup(function(){
-  if(navigator.geolocation) {
-	  navigator.geolocation.getCurrentPosition(function(pos) {
-		  lat = pos.coords.latitude;
-		  long = pos.coords.longitude;
-		  console.log(lat);
-		  console.log(long);
-		  GoogleMaps.load({
+	lat = 13.068091;
+	long = 80.2256504;
+	GoogleMaps.load({
 		libraries: 'places'
 	});
-	  });
-  } else {
-	  lat = 37.785271;
-	  long = -112.3975806;
-	  GoogleMaps.load({
-		libraries: 'places'
-	});
-  }
+	
+	//   if(navigator.geolocation) {
+	//   // navigator.geolocation.getCurrentPosition(function(pos) {
+	// 	  // lat = pos.coords.latitude;
+	// 	  // long = pos.coords.longitude;
+	// 	  lat = 13.047857;
+	// 	  long = 80.0685802;
+	// 	  console.log(lat);
+	// 	  console.log(long);
+	// 	  GoogleMaps.load({
+	// 	libraries: 'places'
+	// });
+	//   });
+	//   } else {
+	//   lat = 13.047857;
+	//   long = 80.0685802;
+	//   GoogleMaps.load({
+	// 	libraries: 'places'
+	// });
+	//   }
 });
