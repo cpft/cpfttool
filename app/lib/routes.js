@@ -3,8 +3,9 @@ Router.configure({
 });
 
 Router.route('/', {
-  // name: 'home',
-	template:'map',
+  name: 'home',
+	// template:'map',
+	action: 'homePage',
   controller: 'MapController',
   where: 'client'
 });

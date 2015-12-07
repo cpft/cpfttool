@@ -14,6 +14,10 @@ MapController = RouteController.extend({
   // this option and the subscriptions option above.
   // return Meteor.subscribe('post', this.params._id);
   
+  homePage: function() {
+	  Router.go('/map');
+  },
+  
   waitOn: function () {
   },
   
