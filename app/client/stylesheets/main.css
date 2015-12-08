@@ -20,6 +20,14 @@ html {
 body {
   margin: 0;
 }
+img.fb {
+	width:128px;
+	height:32px;
+	min-width:128px;
+	min-height:32px;
+	max-width:128px;
+	max-height:32px;	
+}
 article,
 aside,
 details,
