@@ -28,10 +28,6 @@ Template.map.helpers({
 /* Home: Lifecycle Hooks */
 /*****************************************************************************/
 Template.map.onCreated(function () {
-    GoogleMaps.ready('map', function(map) {
-  	  mapInstance = map;
-  	  renderMap(filter);
-    });
 });
 	
 renderMap = function (filter) {
@@ -97,6 +93,10 @@ renderMap = function (filter) {
 }
 
 Template.map.onRendered(function () {
+    GoogleMaps.ready('map', function(map) {
+  	  mapInstance = map;
+  	  renderMap(filter);
+    });
 });
 
 Template.map.onDestroyed(function () {
