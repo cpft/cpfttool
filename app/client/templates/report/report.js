@@ -20,14 +20,12 @@ Template.report.events({
 		  } 
 		  Imgur.upload(opt, function(error, result) {
 			  imageUrl = result.link;
-			  console.log(imageUrl);
 		  });
 		}
 		fileData = reader.readAsDataURL(fileVal);
 	},
 	'click #submitbtn': function(event) {
 		event.preventDefault();
-		console.log("form submitted");
 		var postType = $("input[name='postType']:checked").val();
 		var petType = $("input[name='petType']:checked").val();
 		var petName = $("#inputPetName").val();
@@ -71,7 +69,6 @@ Template.report.events({
 });
 
 insertPetInfo = function (options) {
-	console.log(options);
 	Pets.insert({
 		postType:options.postType,
 		petType:options.petType,
@@ -93,11 +90,9 @@ insertPetInfo = function (options) {
 		imageUrl:options.imageUrl
 	}, function(err, result) {
 		if(result) {
-			console.log(result);
 			var path = "/map";
 			Router.go(path);
 		} else {
-			console.log(err);
 		}
 	});
 
@@ -128,7 +123,6 @@ Template.report.onRendered(function () {
 	this.autorun(function () {
 		if (GoogleMaps.loaded()) {
         	if (GoogleMaps.loaded()) {
-				console.log("loaded");
 				$("#autocomplete").geocomplete({
 					map: $("#map"), details:"form"
     			});

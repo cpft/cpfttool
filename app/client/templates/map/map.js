@@ -28,22 +28,19 @@ Template.map.helpers({
 /* Home: Lifecycle Hooks */
 /*****************************************************************************/
 Template.map.onCreated(function () {
-  GoogleMaps.ready('map', function(map) {
-	  mapInstance = map;
-	  renderMap(filter);
-  });
+    GoogleMaps.ready('map', function(map) {
+  	  mapInstance = map;
+  	  renderMap(filter);
+    });
 });
 	
 renderMap = function (filter) {
   petsCollection = Pets.find(filter);
   for (var petKey in pets) {
-  	 console.log(pets[petKey]);
   	 pets[petKey].setMap(null);
   }
   pets = {};
-  console.log(petsCollection);
   petsCollection.forEach(function(document){
-  	  console.log(document);
 	  var iconImage;
 	  if(document.postType==0) {
 	  	iconImage = "http://chart.apis.google.com/chart?cht=d&chdp=mapsapi&chl=pin%27i%5c%27%5bL%27-2%27f%5chv%27a%5c%5dh%5c%5do%5cFF1100%27fC%5c000000%27tC%5c000000%27eC%5cLauto%27f%5c&ext=.png";
@@ -58,9 +55,7 @@ renderMap = function (filter) {
           id: document._id,
 		icon: iconImage
         });
-  	  console.log(document._id);
   	  petVal = Pets.findOne({"_id": document._id});
-  	  console.log(petVal);
 	  var petInfo = "<img class=image-thumbnail src="+petVal.imageUrl+"/><br>";
 	  petInfo += "<b>"
 	  if(petVal.postType == 0) {
