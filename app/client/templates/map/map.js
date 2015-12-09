@@ -86,7 +86,7 @@ renderMap = function (filter) {
   	  petInfo +=  "<br>" + 	petVal.petSize + " " + petVal.petColor + " " + petVal.petBreed + " " + petVal.petGender + " " + petVal.petAge + " at <br>";
 	  petInfo += petVal.petLocation + "<br>";
 	  petInfo += petVal.details + "<br>";
-	  petInfo += "Found by " + petVal.finderName + ": " + petVal.email;
+	  petInfo += "Reported by " + petVal.finderName + ": " + petVal.email;
   	  var info = new google.maps.InfoWindow({
   	        content: petInfo
   	  });
